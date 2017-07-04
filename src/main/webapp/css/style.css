@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+/** 文字对齐方式设置 **/
+.bh-textRt{text-align:right!important;}
+.bh-textLt{text-align:left!important;}
+.bh-textCt{text-align:center!important;}
+
+.h1-tit{ font-size:20px; text-align:center; padding:50px 0 20px; color:#68c343;}

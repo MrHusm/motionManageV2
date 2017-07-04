@@ -1,0 +1,18 @@
+memcached.ikanshu.hosts=mem.ikanshu.cn:12000
+
+jdbc.zwsc.extra.url =jdbc:mysql://slave_1.ikanshu.cn/user_center_extra?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+jdbc.zwsc.extra.username=yunyingdb
+jdbc.zwsc.extra.password=yydbP@$$word@2016
+
+jdbc.master.zwsc.url=jdbc:mysql://master.ikanshu.cn:3306/client_user_center?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+jdbc.master.zwsc.username=client
+jdbc.master.zwsc.password=client@123
+
+jdbc.resource.url=jdbc:mysql://master.ikanshu.cn:3306/resource_process?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+jdbc.resource.username=client
+jdbc.resource.password=client@123
+
+redis.name=user.ikanshu.cn
+redis.mhost=redis_user.ikanshu.cn
+redis.mport=7381
+redis.mauth=zwsc@bqzx

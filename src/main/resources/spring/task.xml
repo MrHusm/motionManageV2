@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+<context:component-scan base-package="com.manage.task"  />
+	
+	<bean id="doScheduler_every_1"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="heTime_every_1" />
+			</list>
+		</property>
+	</bean>
+	
+
+	<bean id="heTime_every_1" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="he_every_1" />
+		</property>
+		<property name="cronExpression">
+			<!--<value>0 */1 * * * ?</value>  测试每分钟执行-->
+			<value>0 0 */1 * * ?</value>
+		</property>
+	</bean>
+	<bean id="he_every_1"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="initRedisKey" />
+		</property>
+		<property name="targetMethod">
+			<value>resetRedisCacheEveryOne</value>
+		</property>
+	</bean>
+	
+	
+	<!-- ********************************************************************************************* -->
+	<bean id="doScheduler_at_1"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="heTime_at_1" />
+			</list>
+		</property>
+	</bean>
+	
+
+	<bean id="heTime_at_1" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="he_at_1" />
+		</property>
+		<property name="cronExpression">
+			<!--<value>0 */1 * * * ?</value>  测试每分钟执行-->
+			<value>0 0 1 * * ?</value>
+		</property>
+	</bean>
+	<bean id="he_at_1"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="initRedisKey" />
+		</property>
+		<property name="targetMethod">
+			<value>resetRedisCacheAtOne</value>
+		</property>
+	</bean>	
+	
+ 	<bean id="initRedisKey" class="com.manage.task.InitRedisKey"></bean>
+</beans>

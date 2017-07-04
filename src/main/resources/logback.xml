@@ -1,0 +1,42 @@
+<configuration>
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{H:mm} %-5level [%logger{16}] %msg%n</pattern>
+		</encoder>
+	</appender>
+<!-- 
+	<appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">   
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>/data/logs/pd360%d{yyyyMMdd}.log</FileNamePattern>
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%d{HH:mm:ss} %level [%logger{16}:%L] %msg%n</Pattern>		 
+			<charset>utf-8</charset> 
+		</encoder>
+	</appender>
+	
+	<appender name="jmind" class="ch.qos.logback.core.rolling.RollingFileAppender">        
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>/data/logs/jmind%d{yyyyMMdd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%d{HH:mm:ss} %-5level [%logger{10}.%M:%L] %msg%n</Pattern>
+            <charset>utf-8</charset> 
+        </encoder>
+    </appender>
+ -->
+    <logger name="jmind" level="debug" additivity="false">
+       <appender-ref ref="Console" />
+    </logger>
+	
+	<logger name="com.manage" level="info" additivity="false">
+	   <appender-ref ref="Console" />
+	</logger>
+	
+	<root level="info">
+		<appender-ref ref="Console" />
+	</root>
+
+</configuration>
